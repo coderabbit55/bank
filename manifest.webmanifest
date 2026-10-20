@@ -2,21 +2,13 @@
   "id": "./accounts-market.html",
   "name": "Accounts Market",
   "short_name": "Accounts",
-  "description": "Accounts Market web app",
   "start_url": "./accounts-market.html",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#163a5f",
   "icons": [
     {
-      "src": "./icons/icon-192.png",
+      "src": "./icon-192.png",
       "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "./icons/icon-512.png",
-      "sizes": "512x512",
       "type": "image/png"
     }
   ]
