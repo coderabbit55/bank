@@ -92,10 +92,10 @@
       <div class="am-card">
         <div class="am-icon" aria-hidden="true">🔐</div>
         <h1>${APP_NAME}</h1>
-        <p id="am-gate-description">启动验证</p>
-        <button id="am-gate-main" type="button">验证并打开</button>
-        <button id="am-gate-setup" class="secondary" type="button" hidden>首次设置生物识别</button>
-        <button id="am-gate-reset" class="secondary" type="button" hidden>重新设置此设备</button>
+        <p id="am-gate-description">Face ID</p>
+        <button id="am-gate-main" type="button">Open</button>
+        <button id="am-gate-setup" class="secondary" type="button" hidden>Initial Setting</button>
+        <button id="am-gate-reset" class="secondary" type="button" hidden>Reset</button>
         <div id="am-gate-status" class="am-status" role="status" aria-live="polite"></div>
       </div>`;
     document.documentElement.appendChild(overlay);
@@ -130,14 +130,14 @@
 
     setup.addEventListener("click", async () => {
       main.disabled = setup.disabled = reset.disabled = true;
-      status.textContent = "正在注册 Passkey…";
+      status.textContent = "Registering Passkey…";
       try {
         await register();
-        description.textContent = "设置完成。请继续验证以打开页面。";
+        description.textContent = "Completed, Please continue";
         main.hidden = false;
         setup.hidden = true;
         reset.hidden = false;
-        status.textContent = "Passkey 已在此设备的浏览器存储中登记。";
+        status.textContent = "Passkey Registered";
       } catch (e) {
         status.textContent = friendlyError(e);
       } finally {
@@ -146,7 +146,7 @@
     });
 
     reset.addEventListener("click", () => {
-      if (!confirm("清除此网站在此设备保存的 Passkey 标识并重新设置？这不会删除 iCloud 钥匙串中的 Passkey。")) return;
+      if (!confirm("Clear Passkey and Reset？This won't delete in iCloud Passkey。")) return;
       localStorage.removeItem(STORAGE_KEY);
       localStorage.removeItem(USER_ID_KEY);
       location.reload();
@@ -156,7 +156,7 @@
   async function register() {
     if (!PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable ||
         !(await PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable())) {
-      throw new Error("此设备未报告可用的平台验证器。请检查 iOS 版本及 Face ID/设备密码设置。");
+      throw new Error("Please check iOS version and Face ID");
     }
 
     const credential = await navigator.credentials.create({
@@ -182,13 +182,13 @@
       }
     });
 
-    if (!credential) throw new Error("没有创建 Passkey。");
+    if (!credential) throw new Error("Not register Passkey。");
     localStorage.setItem(STORAGE_KEY, b64url(credential.rawId));
   }
 
   async function authenticate() {
     const id = localStorage.getItem(STORAGE_KEY);
-    if (!id) throw new Error("尚未设置 Passkey，请先完成首次设置。");
+    if (!id) throw new Error("Passkey not registered，please set");
 
     const assertion = await navigator.credentials.get({
       publicKey: {
@@ -200,7 +200,7 @@
       }
     });
 
-    if (!assertion) throw new Error("验证未完成。");
+    if (!assertion) throw new Error("Validation not success");
 
     // IMPORTANT: This checks only that the browser returned a WebAuthn assertion.
     // There is no trusted server to verify its signature or prevent replay/tampering.
