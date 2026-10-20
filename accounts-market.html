@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Accounts - Market Overview</title>
+<style>
+:root{--purple:#28145c;--accent:#5731e7;--green:#347f20;--red:#cf291d;--gray:#e7e7e7}
+*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;color:#484848;background:#e7e7e7}
+.phone{max-width:430px;min-height:100vh;margin:auto;background:#e7e7e7;padding-bottom:100px;overflow:hidden}
+.status{height:76px;background:var(--purple);color:white;display:flex;align-items:center;justify-content:space-between;padding:20px 28px 0;font-size:17px;font-weight:600}
+.status .right{display:flex;gap:8px;align-items:center}.battery{border:1.5px solid white;border-radius:5px;padding:1px 5px;font-size:14px}
+.hero{height:116px;background:var(--purple);color:#fff;padding:10px 16px 20px;display:flex;align-items:center;justify-content:space-between}
+.total{font-size:15px}.amount{font-size:29px;margin-top:3px}.gain{border-left:2px solid #7768a4;padding-left:10px;font-size:15px;margin-right:8px}.gain strong{display:block;font-size:17px;margin-top:3px}
+.actions{position:absolute;right:max(calc((100vw - 430px)/2 + 14px),14px);top:67px;display:flex;gap:8px}.circle{width:43px;height:43px;border:1px solid #4a3679;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:24px}
+.indices{background:#fff;display:grid;grid-template-columns:1fr 1fr 1fr;padding:24px 14px 20px;gap:12px}
+.index{border-left:5px solid #3864d6;padding-left:7px;font-size:14px}.index:nth-child(2){border-color:#52a6a6}.index:nth-child(3){border-color:#f2663d}.index .num{font-size:17px;margin-top:2px}.change{font-size:15px;color:#d22d20;margin-top:2px}.up{color:#2d851e}
+.futures{background:#fff;padding:0 14px 14px}.future-head{display:flex;justify-content:space-between;align-items:end;padding:4px 0 13px}.future-head h2{font-size:19px;font-weight:500;margin:0;color:#444}.delay{text-align:right;font-size:10px;line-height:1.4}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.tile{background:var(--green);border-radius:6px;color:#fff;padding:8px 10px;min-height:76px}.tile .name{font-size:17px}.tile .price{font-size:17px;margin-top:3px}.tile .delta{font-size:13px;margin-top:3px}
+.account{background:white;border-radius:15px;margin:10px 10px 25px;padding:16px 16px 13px}.account h2{font-size:18px;color:var(--accent);font-weight:500;margin:0 0 15px}.row{display:flex;justify-content:space-between;gap:10px;color:#111;font-size:15px;margin:6px 0}.row span:last-child{color:#4d4d4d;font-size:17px;font-weight:500}
+.movers{background:#fff;border-radius:15px;margin:0 12px 15px;padding:15px 15px 0}.mover-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}.mover-head h2{font-size:18px;font-weight:500;margin:0}.mover-head span{font-size:11px}.stocks{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}.stock{border-radius:6px;background:var(--green);color:white;padding:9px 11px;min-height:81px}.stock.red{background:var(--red)}.stock b{font-size:17px;font-weight:500}.stock .price{font-size:17px;margin-top:2px}.stock .delta{font-size:13px;margin-top:3px}.viewall{border-top:1px solid #ddd;margin:15px -15px 0;text-align:center;padding:17px;color:var(--accent);font-size:17px}
+.news{background:white;margin:0 10px;border-radius:14px;padding:20px 15px;color:var(--accent);font-size:17px}
+.bottom{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);width:min(92%,400px);height:62px;border:1px solid #d0d0d0;border-radius:40px;background:rgba(255,255,255,.96);display:flex;align-items:center;justify-content:space-around;box-shadow:0 3px 12px #00000008}
+.nav{height:54px;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#111;font-size:10px;gap:3px}.nav svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2}.nav.active{background:#e8e6ed;border-radius:35px;color:var(--accent);height:54px}
+@media(min-width:600px){.phone{box-shadow:0 0 20px #ddd}.bottom{position:absolute;bottom:20px}}
+</style>
+</head>
+<body>
+<div class="phone">
+  <div class="status"><span>08:17 ◢</span><span class="right">●●● ◉ <span class="battery">87</span></span></div>
+  <div class="hero">
+    <div><div class="total">Total Assets ⓘ</div><div class="amount">$0.00</div></div>
+    <div class="gain">Day's Gain<strong>$0.00</strong></div>
+  </div>
+  <div class="actions"><div class="circle">⌕</div><div class="circle">•••</div></div>
+  <section class="indices">
+    <div class="index"><div>DOW</div><div class="num">51,966.03</div><div class="change">-36.38 (-0.06%)</div></div>
+    <div class="index"><div>NASDAQ</div><div class="num">26,430.886</div><div class="change up">290.852 (1.11%)</div></div>
+    <div class="index"><div>S&amp;P 500</div><div class="num">--</div><div class="change" style="color:#555">-- (--)</div></div>
+  </section>
+  <section class="futures">
+    <div class="future-head"><h2>Futures</h2><div class="delay">Delayed Futures Quotes 07:05 PM ET 10/20/26<br>Based on DEC 18 2026 contract</div></div>
+    <div class="tiles">
+      <div class="tile"><div class="name">DOW</div><div class="price">52,258.00</div><div class="delta">76.00 (0.15%)</div></div>
+      <div class="tile"><div class="name">NASDAQ</div><div class="price">29,791.75</div><div class="delta">69.25 (0.23%)</div></div>
+      <div class="tile"><div class="name">S&amp;P 500</div><div class="price">7,746.50</div><div class="delta">12.00 (0.16%)</div></div>
+    </div>
+  </section>
+  <section class="account">
+    <h2>Stock Plan (CRUS) -7466 ›</h2>
+    <div class="row"><span>Total Account Value</span><span>$54,408.59</span></div>
+    <div class="row"><span>Current Account Value</span><span>--</span></div>
+    <div class="row"><span>Potential Benefit Value</span><span>$54,408.59</span></div>
+    <div class="row"><span>Day's Gain</span><span>$0.00</span></div>
+  </section>
+  <section class="movers">
+    <div class="mover-head"><h2>What’s Moving the Market</h2><span>NASDAQ most active</span></div>
+    <div class="stocks">
+      <div class="stock"><b>INTC</b><div class="price">92.03</div><div class="delta">2.18 (2.42%)</div></div>
+      <div class="stock red"><b>CRWV</b><div class="price">61.12</div><div class="delta">-0.27 (-0.43%)</div></div>
+      <div class="stock"><b>NVDA</b><div class="price">217.09</div><div class="delta">2.96 (1.38%)</div></div>
+      <div class="stock"><b>SPCX</b><div class="price">147.96</div><div class="delta">1.93 (1.32%)</div></div>
+      <div class="stock"><b>AMZN</b><div class="price">262.45</div><div class="delta">12.45 (4.98%)</div></div>
+      <div class="stock"><b>IREN</b><div class="price">27.73</div><div class="delta">0.74 (2.74%)</div></div>
+    </div>
+    <div class="viewall">View all Market Movers</div>
+  </section>
+  <section class="news">Semiconductor Recovery Fades as Broader</section>
+  <nav class="bottom">
+    <div class="nav active"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20"/><path d="M8 7h8M8 12h8M8 17h8"/></svg>Accounts</div>
+    <div class="nav"><svg viewBox="0 0 24 24"><path d="M3 5h18M3 12h18M3 19h18M8 3v4M16 10v4M8 17v4"/></svg>Watch Lists</div>
+    <div class="nav"><svg viewBox="0 0 24 24"><path d="M3 7h17l-5-5M21 17H4l5 5"/></svg>Trade</div>
+    <div class="nav"><svg viewBox="0 0 24 24"><path d="M2 3h20v18H2zM5 16l4-5 4 3 6-8"/></svg>Markets</div>
+    <div class="nav"><svg viewBox="0 0 24 24"><path d="M3 5h18M3 12h18M3 19h18"/></svg>Menu</div>
+  </nav>
+</div>
+</body>
+</html>
