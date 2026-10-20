@@ -21,7 +21,7 @@
 
   // WebAuthn requires a secure context. GitHub Pages uses HTTPS.
   if (!window.isSecureContext || !navigator.credentials || !window.PublicKeyCredential) {
-    showGate("此设备或浏览器不支持 WebAuthn 生物识别。请使用支持 Passkey 的 iPhone/iOS 版本。", false);
+    showGate("This device doesn't support Passkey iPhone/iOS", false);
     return;
   }
 
@@ -93,7 +93,7 @@
         <div class="am-icon" aria-hidden="true">🔐</div>
         <h1>${APP_NAME}</h1>
         <p id="am-gate-description">Face ID</p>
-        <button id="am-gate-main" type="button">Open</button>
+        <button id="am-gate-main" type="button">Login</button>
         <button id="am-gate-setup" class="secondary" type="button" hidden>Initial Setting</button>
         <button id="am-gate-reset" class="secondary" type="button" hidden>Reset</button>
         <div id="am-gate-status" class="am-status" role="status" aria-live="polite"></div>
@@ -106,7 +106,7 @@
     const reset = overlay.querySelector("#am-gate-reset");
     const status = overlay.querySelector("#am-gate-status");
 
-    description.textContent = message || "请使用已注册的 Passkey 进行验证。iPhone 可能显示 Face ID 或设备密码选项。";
+    description.textContent = message || "Please use Passkey or Face ID";
     const hasCredential = !!localStorage.getItem(STORAGE_KEY);
     main.hidden = !hasCredential;
     setup.hidden = hasCredential || !allowSetup;
@@ -114,7 +114,7 @@
 
     main.addEventListener("click", async () => {
       main.disabled = setup.disabled = reset.disabled = true;
-      status.textContent = "正在等待系统验证…";
+      status.textContent = "Hold a second…";
       try {
         await authenticate();
         overlay.remove();
@@ -209,13 +209,13 @@
 
   function friendlyError(error) {
     if (error && error.name === "NotAllowedError") {
-      return "验证已取消或超时。请重试；如果持续失败，请检查此设备是否已注册 Passkey。";
+      return "Timeout, Please try again";
     }
     if (error && error.name === "InvalidStateError") {
-      return "此设备的凭证状态不匹配。请点“重新设置此设备”后重试。";
+      return "Not match, please reset";
     }
-    return (error && error.message) ? error.message : "验证失败，请重试。";
+    return (error && error.message) ? error.message : "Try Again";
   }
 
-  showGate("请使用已注册的 Passkey 进行验证。iPhone 可能显示 Face ID 或设备密码选项。");
+  showGate("Please use Passkey or Face ID");
 })();
