@@ -25,6 +25,11 @@
 .bottom{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);width:min(92%,400px);height:62px;border:1px solid #d0d0d0;border-radius:40px;background:rgba(255,255,255,.96);display:flex;align-items:center;justify-content:space-around;box-shadow:0 3px 12px #00000008}
 .nav{height:54px;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#111;font-size:10px;gap:3px}.nav svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2}.nav.active{background:#e8e6ed;border-radius:35px;color:var(--accent);height:54px}
 @media(min-width:600px){.phone{box-shadow:0 0 20px #ddd}.bottom{position:absolute;bottom:20px}}
+.bottom a.nav {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
 </style>
   
 <link rel="manifest" href="./manifest.webmanifest">
@@ -80,7 +85,8 @@
     <div class="nav"><svg viewBox="0 0 24 24"><path d="M3 5h18M3 12h18M3 19h18M8 3v4M16 10v4M8 17v4"/></svg>Watch Lists</div>
     <div class="nav"><svg viewBox="0 0 24 24"><path d="M3 7h17l-5-5M21 17H4l5 5"/></svg>Trade</div>
     <div class="nav"><svg viewBox="0 0 24 24"><path d="M2 3h20v18H2zM5 16l4-5 4 3 6-8"/></svg>Markets</div>
-    <a href="./menu.html"><div class="nav"><svg viewBox="0 0 24 24"><path d="M3 5h18M3 12h18M3 19h18"/></svg>Menu</div></a>
+    <div class="nav"><svg viewBox="0 0 24 24"><path d="M3 5h18M3 12h18M3 19h18"/></svg>Menu</div>
+    <a href="./menu.html" class="nav"><svg viewBox="0 0 24 24"><path d="M3 5h18M3 12h18M3 19h18"/></svg>Menu</a>
   </nav>
 </div>
   <script>
