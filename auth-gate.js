@@ -7,7 +7,7 @@
 
   const STORAGE_KEY = "accountsMarket.webauthn.credentialId.v1";
   const USER_ID_KEY = "accountsMarket.webauthn.userId.v1";
-  const APP_NAME = "Accounts Market";
+  const APP_NAME = "Face Authentication";
   const RP_NAME = "coderabbit55.github.io";
   const RP_ID = location.hostname;
 
